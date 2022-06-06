@@ -1,4 +1,18 @@
-# Default ignored files
+.cpcache*
+target/
+classes/
+pom.xml
+sample-config.json
+*.iml
+.idea/*
+.idea
+.nrepl-port
+.clj-kondo/.cache
+.clj-kondo/cache
+.lsp
+.DS_Store
+.history/
+.vscode
 /shelf/
 /workspace.xml
 *.xml
