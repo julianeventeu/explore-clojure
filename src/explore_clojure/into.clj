@@ -1,6 +1,7 @@
 "juxt"
 (def my-vector [{:name "Keith" :likes :nothing}
                 {:name "Juliane" :likes :drinks}
+                {:name "Iasmin" :likes :drinks}
                 {:name "Keith" :likes :pizza}])
 
 ;create a set of vector
@@ -21,6 +22,15 @@ Would like to explore more in detail!!
          {:name "Iasmin" :likes :drinks}
          {:name "Keith" :likes :pizza}]))
 
+(->> my-vector
+     (remove (comp #{:nothing} :likes))
+     (map (juxt :likes :name)))
+
 (into [-1 0] [1 2 3 4])
 
+(into [] [1 2 3 4])
+
 (likes->name :drinks)
+
+(into (list) [1 2 3])
+

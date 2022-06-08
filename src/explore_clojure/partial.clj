@@ -21,11 +21,6 @@
   (println "is empty" my-mapa))
 
 (->> [1 2 3 4 5]
-     (map even?)
-     (filter #(= 2 %))
-     (filter #(= 4 %)))
-
-(->> [1 2 3 4 5]
      (filter even?)
      (filter #(or (= 2 %)
                   (= 4 %))))
@@ -44,14 +39,40 @@
             (filter #{2 4}))
       [1 2 3 4 5])
 
-(filter (comp #{2 4} inc) [1 2 3 4 5])
+; ---------------------------------
+(filter (comp #{2 4} dec) [1 2 3 4 5])
+
+(->> [1 2 3 4 5]
+     (map dec)
+     (filter #{2 4}))
+
 
 (into []
-      (filter (comp #{2 4} even?))
+      (filter (comp #{true} even?))
       [1 2 3 4 5])
 
 (filter (comp #{2 4} :num)
-        [{:num 1} {:num 2} {:num 3} {:num 4} {:num 5}])
+        [{:num 1 :teste "A"}
+         {:num 2 :teste "B"}
+         {:num 3 :teste "C"}
+         {:num 4 :teste "D"}
+         {:num 5 :teste "E"}])
+
+
+(filter #(or (= 4 (:num %)) (= 2 (:num %)))
+        [{:num 1 :teste "A"}
+         {:num 2 :teste "B"}
+         {:num 3 :teste "C"}
+         {:num 4 :teste "D"}
+         {:num 5 :teste "E"}])
+
+
+(filter (comp #{"D" "C"} :teste)
+        [{:num 1 :teste "A"}
+         {:num 2 :teste "B"}
+         {:num 3 :teste "C"}
+         {:num 4 :teste "D"}
+         {:num 5 :teste "E"}])
 
 
 
