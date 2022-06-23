@@ -1,3 +1,6 @@
+(ns explore-clojure.set
+  (:require [clojure.set :refer :all]))
+
 (def my-token "123456789")
 
 (def teste #{my-token "1234"})
@@ -17,11 +20,21 @@
     {:composer "W. A. Mozart" :country "Austria"}
     {:composer "Giuseppe Verdi" :country "Italy"}})
 
-(clojure.set/rename compositions {:name :title})
+(rename compositions {:name :title})
 
-(clojure.set/select #(= (:name %) "Requiem") compositions)
+(select #(= (:name %) "Requiem") compositions)
 
-(clojure.set/project compositions [:name])
+(project compositions [:name])
 
-(clojure.set/join compositions composers)
+(join compositions composers)
+
+
+; --------------------
+(def languages #{"java" "c" "d" "clojure"})
+(def beverages #{"java" "chai" "pop"})
+
+(union languages beverages)
+(difference languages beverages)
+(intersection languages beverages)
+(select #(= 1 (count %)) languages)
 
