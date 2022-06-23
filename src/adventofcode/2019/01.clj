@@ -100,10 +100,16 @@
               137498])
 
 (defn calculate-fuel-by-module [mass]
-  (-> mass
-      (quot 3)
-      (- 2)))
+    (let [fuel (-> mass
+                   (quot 3)
+                   (- 2))]
+      (if (<= fuel 0)
+        0
+        (+ fuel (calculate-fuel-by-module fuel)))))
 
 (->> modules
      (map calculate-fuel-by-module)
      (reduce +))
+
+(calculate-fuel-by-module 1969)
+;969
